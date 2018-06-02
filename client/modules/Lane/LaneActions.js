@@ -1,6 +1,6 @@
 import callApi from '../../util/apiCaller';
 import { lanes } from '../../util/schema';
-import { normalizr } from 'normalizr';
+import { normalize } from 'normalizr';
 import { createNotes } from '../Note/NoteActions';
 
 // Export Constants
