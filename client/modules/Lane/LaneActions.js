@@ -8,7 +8,7 @@ export const CREATE_LANE = 'CREATE_LANE';
 export const UPDATE_LANE = 'UPDATE_LANE';
 export const DELETE_LANE = 'DELETE_LANE';
 export const CREATE_LANES = 'CREATE_LANES';
-export const EDIT_LANES = 'EDIT_LANES';
+export const EDIT_LANE = 'EDIT_LANE';
 
 // Export Actions
 
@@ -39,7 +39,7 @@ export function updateLane(lane) {
 
 export function updateLaneRequest(lane) {
     return (dispatch) => {
-        return callApi('lanes/${lane.id}', 'put', { name: lane.name, editing: lane.editing}).then(() => {
+        return callApi(`lanes/${lane.id}`, 'put', { name: lane.name, editing: lane.editing}).then(() => {
             dispatch(createLane(lane));
         });
     };
@@ -54,8 +54,8 @@ export function deleteLane(laneId) {
 
 export function deleteLaneRequest(lane) {
     return dispatch => {
-        return callApi('lanes/${lane.id}', 'delete').then(() => {
-            dispatch(deleteLane(laneId));
+        return callApi(`lanes/${lane}`, 'delete').then(() => {
+            dispatch(deleteLane(lane));
         });
     };
 }

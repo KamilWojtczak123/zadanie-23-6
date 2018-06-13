@@ -19,7 +19,7 @@ export function createNote(note, laneId) {
 export function createNoteRequest(note, laneId) {
     return (dispatch) => {
         return callApi('notes', 'post', { note, laneId}).then(noteResp => {
-            dispatch(createNote(noteResp, laneId));
+            dispatch(createNote(note, laneId));
         });
     };
 }
@@ -33,7 +33,7 @@ export function updateNote(note) {
 
 export function updateNoteRequest(note) {
     return (dispatch) => {
-        return callApi('notes/${note.id}', 'put', note).then(noteResp => {
+        return callApi(`notes/${note.id}`, 'put', note).then(noteResp => {
             dispatch(updateNote(noteResp));
         });
     };
@@ -49,7 +49,7 @@ export function deleteNote(noteId, laneId) {
 
 export function deleteNoteRequest(noteId, laneId) {
     return (dispatch) => {
-        return callApi('note/$(noteId)', 'delete').then(() => {
+        return callApi(`notes/${noteId}`, 'delete', { laneId }).then(() => {
             dispatch(deleteNote(noteId, laneId));    
         });
     };
